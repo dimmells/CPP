@@ -1,0 +1,35 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: melnyk <marvin@42.fr>                     +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Create: 2018/06/20 12:05:15 by melnyk           #+#    #+#              #
+#    Upate: 2018/06/20 12:05:17 by melnyk          ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+NAME = replace
+
+FLAGS = -Wall -Werror -Wextra
+
+OBJ = $(SRC:.cpp=.o)
+
+SRC = main.cpp
+
+all: $(NAME)
+
+$(NAME): $(OBJ)
+	clang++ -o $(NAME) $(OBJ)
+
+%.o: %.c
+	clang++ $(FLAGS) -c -I. $<
+
+clean:
+	rm -rf $(OBJ)
+
+fclean: clean
+	rm -rf $(NAME)
+
+re: fclean all
